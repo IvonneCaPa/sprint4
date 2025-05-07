@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function __invoke() //solo admin una ruta
     {
-        return "Bienvenido a la página de inicio";
+        return view('home');
     }
 }
