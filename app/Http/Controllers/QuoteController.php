@@ -11,7 +11,7 @@ class QuoteController extends Controller
 {
     public function index()
     {
-        $quotes = Quote::orderBy('id', 'desc')->paginate(10);
+        $quotes = Quote::orderBy('datetime', 'desc')->paginate(10);
         return view('quotes.index', compact('quotes'));
 
     }
