@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Gallery;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,9 @@ class PhotoFactory extends Factory
     public function definition(): array
     {
         return [
-        'title' => substr($this->faker->sentence(), 0, 20),
-        'location' => substr($this->faker->sentence(), 0, 45),
+            'gallery_id' => Gallery::factory(),
+            'title' => substr($this->faker->sentence(), 0, 20),
+            'location' => 'photos/' . $this->faker->uuid() . '.jpg',
         ];
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Gallery;
+
 use App\Models\Quote;
 use App\Models\User;
-use App\Models\Photo;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(4)->create();
 
-        Quote::factory(50)->create();
-        Gallery::factory(6)->create();
-        //Photo::factory(100)->create();
+        Quote::factory(20)->create();
+
+        $this->call([
+            GallerySeeder::class,
+        ]);
     }
 }

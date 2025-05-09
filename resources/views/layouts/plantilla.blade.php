@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <!-- favicon -->
-     <!-- estilos -->
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
+    @vite('resources/css/app.css')
 </head>
 <body>
     <!-- header -->

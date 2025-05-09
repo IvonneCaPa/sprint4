@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('gallery_id')->constrained()->onDelete('cascade');
             $table->string('title', length: 20);
-            $table->string(' location', length: 45);
+            $table->string('location');
             $table->timestamps();
         });
     }

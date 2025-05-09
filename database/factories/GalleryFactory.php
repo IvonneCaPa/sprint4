@@ -17,9 +17,9 @@ class GalleryFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => substr($this->faker->sentence(), 0, 20),
+            'title' => substr($this->faker->sentence(3), 0, 20),
             'date' => $this->faker->date(),
-            'site' => substr($this->faker->sentence(), 0, 45),
+            'site' => substr($this->faker->sentence(3), 0, 45),
         ];
     }
 }
