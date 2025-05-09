@@ -12,24 +12,24 @@
             </a>
         </div>
         
-        <ul class="max-w-md mx-auto space-y-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
             @foreach ($quotes as $quote)
-                <li class="bg-white p-3 rounded shadow hover:shadow-md transition-shadow">
-                    <a href="{{route('quotes.show', $quote)}}" class="text-gray-700 hover:text-orange-500">
+                <div class="bg-white p-4 rounded shadow hover:shadow-lg transition-shadow">
+                    <a href="{{route('quotes.show', $quote)}}" class="block text-lg font-medium text-gray-700 hover:text-orange-500">
                         {{ $quote->title }}
                     </a>
-                    <p class="text-gray-500 mt-1">
+                    <p class="text-gray-500 mt-2 line-clamp-2">
                         {{ $quote->description }}
                     </p>
-                    <p class="text-gray-400 mt-1">
+                    <p class="text-gray-400 text-sm mt-2">
                         {{ $quote->created_at->format('d/m/Y H:i') }}
-                </li>
+                    </p>
+                </div>
             @endforeach        
-        </ul>
+        </div>
 
-        <div class="mt-6 flex justify-center">
+        <div class="mt-8 flex justify-center">
             {{ $quotes->links() }}
         </div>
     </div>
 @endsection
-

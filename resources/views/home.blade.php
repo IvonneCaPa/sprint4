@@ -9,11 +9,16 @@
         <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
             <div class="text-center">
                 <!-- Aquí puedes añadir más contenido para tu página principal -->
-                <p class="text-gray-600 mb-4">Sistema de gestión de citas</p>
+                <p class="text-gray-600 mb-4">Sistema de gestión de citas y gestón de galerias</p>
                 
                 <div class="mt-8">
                     <a href="{{ route('quotes.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
                         Ver todas las citas
+                    </a>
+                </div>
+                    <div class="mt-8">
+                    <a href="{{ route('galleries.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        Ver todas las galerias
                     </a>
                 </div>
             </div>
