@@ -7,16 +7,9 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
     @vite('resources/css/app.css')
 </head>
-<body>
-    <!-- header -->
-     <!-- nav -->
-    @yield('content')   
-
-
-
-
-    
-    <!-- footer -->
-     <!-- script -->
+<body class="flex flex-col">
+    @include('layouts.header')
+    @yield('content')
+    @include('layouts.footer')   
 </body>
-</html>
+</html> 

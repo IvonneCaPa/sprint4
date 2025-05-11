@@ -1,29 +1,28 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\QuoteController;
+
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', HomeController::class);
-
-//  Route::controller(QuoteController::class)->group(function () {
-//      Route::get('quotes', 'index')->name('quotes.index');
-//      Route::get('quotes/create', 'create')->name('quotes.create');
-//      Route::post('quotes', 'store')->name('quotes.store');
-//      Route::get('quotes/{quote}', 'show')->name('quotes.show');
-//      Route::get('quotes/{quote}/edit', 'edit')->name('quotes.edit');
-//      Route::put('quotes/{quote}', 'update')->name('quotes.update');
-//      Route::delete('quotes/{quote}', 'destroy')->name('quotes.destroy');
-//  });
+Route::get('/', HomeController::class)->name('home');
 
 // rutas para las citas
 Route::resource('quotes', QuoteController::class)->parameters('quotes', 'quote');
 
+// Rutas para galerías
+Route::resource('galleries', GalleryController::class);
 
-// rutas para las fotos
-Route::resource('photos', PhotoController::class)->parameters(['photos', 'photo']);
+// Rutas para fotos (anidadas con galerías)
+Route::resource('galleries.photos', PhotoController::class)->except(['show']);
 
-// Rutas para las galerías
-//Route::resource('galleries', GalleryController::class)->parameters(['galleries', 'gallery']);
+
+
+
+
+
+
+

@@ -18,7 +18,7 @@ class QuoteController extends Controller
 
     public function create()
     {
-        return view('quotes.create');
+        return view('quotes.create')->with('success', 'Evento creado correctamente.');
     }
 
     public function store(StoreQuote $request)
@@ -54,12 +54,12 @@ class QuoteController extends Controller
 
         $quote->save();
 
-        return redirect() -> route('quotes.show', $quote);
+        return redirect() -> route('quotes.show', $quote)->with('success', 'Evento actualizado correctamente.');
     }
 
     public function destroy(Quote $quote)
     {
         $quote->delete();
-        return redirect() -> route('quotes.index');
+        return redirect() -> route('quotes.index')->with('success', 'Cita eliminada correctamente.');
     }
 }
