@@ -27,16 +27,18 @@ class GalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'title' => 'required|string|max:20',
-            'date' => 'required|date',
-            'site' => 'required|string|max:45',
-        ]);
-        Gallery::create($validated);
-        return redirect()->route('galleries.index')->with('success', 'Galeria creada correctamente.');
-    }
+  public function store(Request $request)
+{
+    $validated = $request->validate([
+        'title' => 'required|string|max:20',
+        'date' => 'required|date',
+        'site' => 'required|string|max:45',
+    ]);
+
+    $gallery = Gallery::create($validated);
+
+    return redirect()->route('galleries.show', $gallery->id)->with('success', 'Galería creada correctamente.');
+}
 
     /**
      * Display the specified resource.

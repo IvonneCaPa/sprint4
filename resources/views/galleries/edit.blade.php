@@ -3,50 +3,57 @@
 @section('title', 'Editar Galeria')
 
 @section('content')
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-orange-500 text-center mb-6">Editar Galería</h1>
-        
-        <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
-            <form action="{{route('galleries.update', $gallery)}}" method="POST">
+    <div class="container mx-auto px-4 py-1">
+        <h1 class="text-3xl font-bold text-orange-500 text-center mb-6">Editar Galeria</h1>        
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+            <form action="{{ route('galleries.update', $gallery) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="mb-4">
-                    <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Título de la galería:</label>
-                    <input type="text" name="title" id="title" value="{{ old('title', $gallery->title) }}" 
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                    @error('title')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                    @enderror
+                    <label class="block text-gray-700 font-medium mb-2">
+                        Nombre de la galeria:
+                        <input type="text" name="name" value="{{ old('title', $gallery->title) }}" 
+                        class="mt-1 block w-full rounded-md border-2 border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 py-2 px-3 shadow-sm transition duration-150 ease-in-out">
+                    </label>
+                    @error('name')
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                    @enderror                    
                 </div>
-
                 <div class="mb-4">
-                    <label for="site" class="block text-sm font-medium text-gray-700 mb-1">Lugar:</label>
-                    <input type="text" name="site" id="site" value="{{ old('site', $gallery->site) }}"
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                    @error('site')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mb-6">
-                    <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Fecha:</label>
-                    <input type="date" name="date" id="date" value="{{ old('date', $gallery->date) }}"
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                    <label class="block text-gray-700 font-medium mb-2">
+                        Fecha:
+                        <input type="date" name="date" value="{{ old('date', $gallery->date) }}"
+                        class="mt-1 block w-full rounded-md border-2 border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 py-2 px-3 shadow-sm transition duration-150 ease-in-out">
+                    </label>
                     @error('date')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
-                <div class="flex items-center justify-between">
-                    <a href="{{ route('galleries.show', $gallery) }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-4 rounded">
-                        Cancelar
-                    </a>
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded">
-                        Actualizar Galería
-                    </button>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2">
+                        Lugar:
+                        <input type="text" name="site" value="{{ old('site', $gallery->site) }}"
+                        class="mt-1 block w-full rounded-md border-2 border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 py-2 px-3 shadow-sm transition duration-150 ease-in-out">
+                    </label>
+                    @error('site')
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
             </form>
-        </div>
+            <div class="mb-4">
+                <a href={{ route('galleries.photos.index', $gallery) }} class="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300 mx-auto block text-center">Agregar/eliminar fotos</a>
+            </div>
+            <div class="flex justify-between">
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    Actualizar Galería
+                </button>
+                <a href="{{ route('galleries.show', $gallery) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300">Volver</a>
+
+
+            </div>     
+        </div>            
+
     </div>
+
 @endsection

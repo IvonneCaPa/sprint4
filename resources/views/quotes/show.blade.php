@@ -3,7 +3,7 @@
 @section('title', 'Cita')
 
 @section('content')
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-1">
         <h1 class="text-3xl font-bold text-orange-500 text-center mb-6">{{ $quote->title }}</h1>
         
         <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
@@ -24,7 +24,7 @@
             
             <div class="flex justify-between">
                 <a href="{{ route('quotes.edit', $quote) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-300">
-                    Editar Cita
+                    Editar Evento
                 </a>
                 
                 <form action="{{ route('quotes.destroy', $quote) }}" method="POST">
@@ -35,12 +35,6 @@
                     </button>
                 </form>
             </div>
-        </div>
-        
-        <div class="mt-6 flex justify-center">
-            <a href="{{ route('quotes.index') }}" class="text-blue-500 hover:text-blue-700 font-medium">
-                Volver a todas las citas
-            </a>
         </div>
     </div>
 @endsection

@@ -1,44 +1,46 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Crear Galeria')
+@section('title', 'Crear Galería')
 
 @section('content')
-    <div class="container mx-auto px-4 py-8">
+
+    <div class="container mx-auto px-4 py-1">
         <h1 class="text-3xl font-bold text-orange-500 text-center mb-6">Crear Galería</h1>
-        
-        <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
             <form action="{{ route('galleries.store') }}" method="POST">
                 @csrf
-
                 <div class="mb-4">
-                    <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Título de la cita:</label>
-                    <input type="text" name="title" id="title" value="{{ old('title') }}" 
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                    <label class="block text-gray-700 font-medium mb-2">
+                        Nombre de la galería:
+                        <input type="text" name="title" value="{{ old('title') }}" 
+                        class="mt-1 block w-full rounded-md border-2 border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 py-2 px-3 shadow-sm transition duration-150 ease-in-out">
+                    </label>
                     @error('title')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
                 <div class="mb-4">
-                    <label for="site" class="block text-sm font-medium text-gray-700 mb-1">Lugar:</label>
-                    <textarea name="site" id="site" cols="30" rows="5"
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">{{ old('site') }}</textarea>
+                    <label class="block text-gray-700 font-medium mb-2">
+                        Lugar:
+                        <input type="text" name="site" value="{{ old('site') }}" 
+                        class="mt-1 block w-full rounded-md border-2 border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 py-2 px-3 shadow-sm transition duration-150 ease-in-out">
+                    </label>
                     @error('site')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
-                <div class="mb-6">
-                    <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Fecha:</label>
-                    <input type="date" name="date" id="date" value="{{ old('date') }}"
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                <div class="mb-4">
+                    <label for="">
+                        Fecha:
+                        <input type="date" name="date" value="{{ old('date') }}"
+                        class="mt-1 block w-full rounded-md border-2 border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 py-2 px-3 shadow-sm transition duration-150 ease-in-out">
+                    </label>
                     @error('date')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
-                <div class="flex items-center justify-end">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded">
+                <div class="flex justify-center">
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
                         Crear Galería
                     </button>
                 </div>
