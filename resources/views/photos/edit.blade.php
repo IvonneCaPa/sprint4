@@ -23,13 +23,33 @@
 
                         <div class="mb-4">
                             <label for="image" class="block text-gray-700 font-medium mb-2">Cambiar Imagen (opcional):</label>
-                            <input type="file" name="image" id="image" class="mt-1 block w-full rounded-md border-2 border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 py-2 px-3 shadow-sm transition duration-150 ease-in-out" accept="image/*">
+                            <input type="file" name="image" id="image" class="hidden" accept="image/*">
+                            <div class="flex items-center space-x-3">
+                                <button type="button" onclick="document.getElementById('image').click()" 
+                                        class="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-md shadow-sm transition duration-150 ease-in-out">
+                                    Seleccionar imagen
+                                </button>
+                                <span id="image-chosen" class="text-gray-500">Ninguna imagen seleccionada</span>
+                            </div>            
                             @error('image')
                                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
 
-                        <div class="flex items-center justify-between">
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                document.getElementById('image').addEventListener('change', function() {
+                                    const fileChosen = document.getElementById('image-chosen');
+                                    if(this.files.length > 0) {
+                                        fileChosen.textContent = this.files[0].name;
+                                    } else {
+                                        fileChosen.textContent = 'Ninguna imagen seleccionada';
+                                    }
+                                });
+                            });
+                        </script>
+
+                        <div class="flex items-center justify-between mt-4">
                             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 Actualizar
                             </button>

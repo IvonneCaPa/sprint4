@@ -10,6 +10,8 @@
 <body class="flex flex-col">
     @include('layouts.header')
     @yield('content')
-    @include('layouts.footer')   
+    @include('layouts.footer')  
+    
+
 </body>
 </html> 

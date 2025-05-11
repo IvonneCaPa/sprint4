@@ -47,7 +47,7 @@
                 <div class="mb-6">
                     <label class="block text-gray-700 font-medium mb-2">
                         Fecha y Hora del evento:
-                        <input type="datetime-local" name="dateTime" value="{{ old('dateTime', $quote->dateTime) }}" 
+                        <input type="datetime-local" name="dateTime" value="{{ old('dateTime', $quote->dateTime ? date('Y-m-d\TH:i', strtotime($quote->dateTime)) : '') }}" 
                                class="mt-1 block w-full rounded-md border-2 border-gray-300 focus:border-orange-500 focus:ring focus:ring-orange-200 py-2 px-3 shadow-sm transition duration-150 ease-in-out">
                     </label>
                     @error('dateTime')
